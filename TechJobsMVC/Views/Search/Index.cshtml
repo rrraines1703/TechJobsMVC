@@ -26,8 +26,26 @@
 
     <hr />
 
-    @{
+
+    @if (ViewBag.jobs != null)
+    {
         //TODO #4: Loop over the search results to display all job fields.
-    }
+            <table class="job-listing">
+
+                @foreach (var job in ViewBag.jobs)
+                {
+                    <tr>
+                        <td>
+                            <p>ID: @job.Id</p>
+                            <p>Name: @job.Name</p>
+                            <p>Employer: <a asp-controller="List" asp-action="Jobs" asp-route-column="employer" asp-route-value="@job.Employer">@job.Employer</a></p>
+                            <p>Location: <a asp-controller="List" asp-action="Jobs" asp-route-column="location" asp-route-value="@job.Location">@job.Location</a></p>
+                            <p>Position Type: <a asp-controller="List" asp-action="Jobs" asp-route-column="positionType" asp-route-value="@job.PositionType">@job.PositionType</a></p>
+                            <p>Skill: <a asp-controller="List" asp-action="Jobs" asp-route-column="coreCompetency" asp-route-value="@job.CoreCompetency">@job.CoreCompetency</a></p>
+                        </td>
+                    </tr>
+                }
+            </table>
+     }
 
 </div>
